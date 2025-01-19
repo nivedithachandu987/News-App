@@ -1,0 +1,119 @@
+
+  /* SCI-TECH MAIN SECTION */
+  .sci-tech-main {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f4f4f4;
+  }
+  
+  .sci-tech-main h1 {
+    font-size: 2.5rem;
+  }
+  
+  .sci-tech-main .explore-btn {
+    padding: 10px 20px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .sci-tech-main .explore-btn:hover {
+    background: #105d9e;
+  }
+  
+  /* ARTICLES SECTION */
+  .sci-tech-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .article-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .article-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .article-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .article-card .read-more {
+    text-decoration: none;
+    color: #1e90ff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .article-card .read-more:hover {
+    color: #105d9e;
+  }
+  
+  /* MEDIA QUERIES */
+  @media (max-width: 768px) {
+    .sci-tech-main h1 {
+      font-size: 2rem;
+    }
+  
+    .sci-tech-main .explore-btn {
+      font-size: 1rem;
+    }
+  
+    .article-card h2 {
+      font-size: 1.25rem;
+    }
+  
+    .article-card p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sci-tech-main {
+      padding: 30px 10px;
+    }
+  
+    .sci-tech-main h1 {
+      font-size: 1.8rem;
+    }
+  
+    .sci-tech-main .explore-btn {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  
+    .sci-tech-articles {
+      gap: 15px;
+    }
+  
+    .article-card {
+      padding: 15px;
+    }
+  
+    .article-card h2 {
+      font-size: 1.2rem;
+    }
+  
+    .article-card p {
+      font-size: 0.85rem;
+    }
+  }
+  

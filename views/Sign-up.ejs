@@ -1,0 +1,491 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Sign Up Form</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9999, #800000, #ff4d4d); /* Background gradient */
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            min-height: 100vh; /* Ensure body takes full height */
+        }
+
+        header {
+            padding: 20px 0; /* Add padding to the header for spacing */
+            width: 100%; /* Ensure header takes full width */
+            background: rgba(255, 255, 255, 0.8); /* Optional: Add a background to the header */
+            position: relative; /* Position relative for stacking context */
+            z-index: 10; /* Ensure header is above other elements */
+        }
+
+        .signup-container {
+            background: #f89393; /* Soft white card */
+            padding: 20px; /* Increased padding for better spacing */
+            border-radius: 6px; /* Slightly smaller border radius */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 300px; /* Reduced max width for smaller screens */
+            width: 90%; /* Responsive width */
+            height: 450px; /* Set a specific height for the container */
+            text-align: center;
+            transition: background 0.3s ease; /* Smooth transition for background color */
+            margin: 100px auto; /* Center the container and push it down further */
+            flex-grow: 1; /* Allow the container to grow and fill space */
+        }
+
+        .signup-container:hover {
+            background: linear-gradient(to bottom right, #ffd1d1, #ff6b6b, #762626, #f5a3a3, #ff4d4d); /* Multi-color gradient on hover */
+        }
+
+        .signup-container h2 {
+            margin-bottom: 8px;
+            font-size: 1.5rem; /* Increased title font size */
+            color: #762626; /* Rich maroon for title */
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .signup-container p {
+            margin-bottom: 10px;
+            font-size: 0.9rem; /* Slightly larger description font size */
+            color: #2d2e2e; /* Subtle gray for description */
+        }
+
+        .input-container {
+            position: relative; /* Position relative for absolute positioning of the icon */
+            margin-bottom: 8px; /* Space below input fields */
+        }
+
+        .signup-container input,
+        .signup-container select {
+            width: 100%;
+            height: 40px; /* Fixed height for input fields */
+            padding: 10px; /* Increased padding for inputs */
+            padding-right: 30px; /* Space for the monkey icon */
+            border: 1px solid #d3b8b8; /* Soft border */
+            border-radius: 4px;
+            font-size: 1rem; /* Increased font size for inputs */
+        }
+
+        .toggle-password {
+            position: absolute; /* Position the icon absolutely */
+            right: 10px; /* Position it to the right */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-around; /* Space buttons evenly */
+            margin-bottom: 10px; /* Space below social login buttons */
+        }
+
+        .social-btn {
+            background-color: #fff; /* White background for buttons */
+            border: 1px solid #d3b8b8; /* Soft border */
+            border-radius: 4px; /* Rounded corners */
+            padding: 5px 10px; /* Padding for buttons */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            font-size: 0.8rem; /* Smaller font size */
+            transition: background 0.3s ease; /* Smooth transition for background color */
+        }
+
+        .social-btn img {
+            width: 20px; /* Smaller image size */
+            height: 20px; /* Smaller image size */
+            margin-right: 5px; /* Space between image and text */
+        }
+
+        .social-btn:hover {
+            background-color: #f0f0f0; /* Light gray on hover */
+        }
+
+        .signup-btn {
+            background-color: #ff6666; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            padding: 10px; /* Padding for button */
+            border-radius: 4px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 1rem; /* Font size for button */
+            width: 100%; /* Make the button full width */
+            transition: background 0.3s ease; /* Smooth transition for background color */
+        }
+
+        .signup-btn:hover {
+            transform: scale(1.05); /* Slight scale up effect */
+        }
+
+        .login {
+            margin-top: 20px; /* Added margin to push it down */
+            font-size: 0.9rem; /* Font size for the login text */
+            color: #2d2e2e; /* Subtle gray for the login text */
+        }
+
+        /* General Footer Styles */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            width: 100%; /* Set footer width to 100% */
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Logo Container */
+        .scrolling-logo {
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .logo-link {
+            font-size: 25px;
+            font-weight: bold;
+            color: maroon;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            position: absolute;
+            animation: bounceLeftRight 5s ease-in-out infinite;
+            transition: color 0.3s ease;
+            border: 2px solid #fff;
+            padding: 5px;
+            border-radius: 10px;
+            color: #bd1515;
+        }
+
+        /* Bouncing animation for logo */
+        @keyframes bounceLeftRight {
+            0% { left: 0; }
+            25% { left: 30%; }
+            50% { left: 70%; }
+            75% { left: 30%; }
+            100% { left: 0; }
+        }
+
+        /* Navigation Links */
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-link-list { 
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-link-item:hover {
+            color: #ffffff;
+        }
+
+        /* Social Media Icons */
+        .social-media-section {
+            margin-bottom: 20px;
+        }
+
+        .social-media-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0;
+        }
+
+        .social-icon-link {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .social-icon-link:hover {
+            color: #9f2020;
+        }
+
+        /* Additional Links and Copyright */
+        .footer-bottom {
+            margin-top: 20px;
+        }
+
+        .footer-bottom-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .bottom-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .bottom-link-item:hover {
+            color: #a70909;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #bbb;
+            margin: 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            .signup-container {
+                margin-top: 60px; /* Adjusted margin to push it down further */
+                max-width: 90%; /* Allow more width on smaller screens */
+            }
+
+            .footer-link-list, .social-media-list, .footer-bottom-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 12px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .signup-container {
+                margin-top: 80px; /* Further increased margin for mobile */
+                max-width: 95%; /* Allow even more width on very small screens */
+            }
+
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 10px;
+            }
+
+            .footer-copyright {
+                font-size: 8px;
+            }
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="date" id="current-date"></div>
+        <div class="user-actions">
+            <div class="login-link-container">
+                <a href ="/login_signup" class="login-btn">
+                    <i class="fas fa-user icon"></i> Login
+                </a>
+            </div>
+            <a href="/FreeTrial"class="free-trial">Free Trial</a>
+            <a href="/subscription"class="btn subscribe">Subscribe</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+                <span class=" bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="logo-container">
+            <a href="/" class="logo">
+                <i class="fas fa-capsules icon"></i> Daily Dose
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <a href="/" class="nav-link">
+                    <i class="fas fa-search search-icon"></i>
+                  </a>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/india" class="nav-link">India</a></li>
+                <li><a href="/world" class="nav-link">World</a></li>
+                <li><a href="/movies" class="nav-link">Movies</a></li>
+                <li><a href="/sport" class="nav-link">Sport</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/health" class="nav-link">Health</a></li>
+                <li><a href="/opinion" class="nav-link">Opinion</a></li>
+                <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+                <li><a href="/premium" class="nav-link active"><span class="circle">P</span> Premium</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <div class="social-login">
+            <button class="social-btn" onclick="socialLogin('Google')">
+                <img src="google.png" alt="Google">
+                Google
+            </button>
+            <button class="social-btn" onclick="socialLogin('Apple')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+                Apple
+            </button>
+        </div>
+        <div class="divider">OR</div>
+        <form onsubmit="return handleSignUp(event)">
+            <div class="input-container">
+                <input type="text" id="username" placeholder="Email" required>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="toggle-password" id="togglePassword" onclick="togglePassword()">🙈</span>
+            </div>
+            <div class="input-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password" id="toggleConfirmPassword" onclick="toggleConfirmPassword()">🙈</span>
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+            <div class="success-message" id="successMessage" style="display:none;">Sign up successful!</div>
+        </form>
+        <div class="login">Already have an account? <a href="login_signup">Login</a></div>
+    </div>
+
+    <footer>
+      <div class="scrolling-logo">
+         <a href="/" class="logo-link">
+            <i class="fas fa-capsules logo-icon"></i>
+            Daily Dose
+         </a>
+      </div>
+    
+      <div class="footer-content">
+         <nav class="footer-links">
+            <ul class="footer-link-list">
+               <li><a href="/" class="footer-link-item">Home</a></li>
+               <li><a href="/india" class="footer-link-item">India</a></li>
+               <li><a href="/world" class="footer-link-item">World</a></li>
+               <li><a href="/movies" class="footer-link-item">Movies</a></li>
+               <li><a href="/sport" class="footer-link-item">Sport</a></li>
+               <li><a href="/data" class="footer-link-item">Data</a></li>
+               <li><a href="/health" class="footer-link-item">Health</a></li>
+               <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+               <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+               <li><a href="/premium" class="footer-link-item">Premium</a></li>
+            </ul>
+         </nav>
+    
+         <div class="social-media-section">
+            <ul class="social-media-list">
+               <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+               <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+               <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+               <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+               <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+               <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+               <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+            </ul>
+         </div>
+    
+         <div class="footer-bottom">
+            <ul class="footer-bottom-links">
+               <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+               <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+               <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+            </ul>
+            <p class="footer-copyright">
+               &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+            </p>
+         </div>
+      </div>
+    </footer>
+    
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePassword');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🐵'; // Open-eyed monkey
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '🙈'; // Closed-eye monkey
+            }
+        }
+
+        function toggleConfirmPassword() {
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const toggleIcon = document.getElementById('toggleConfirmPassword');
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                toggleIcon.textContent = '🐵'; // Open-eyed monkey
+            } else {
+                confirmPasswordInput.type = 'password';
+                toggleIcon.textContent = '🙈'; // Closed-eye monkey
+            }
+        }
+
+        function validatePassword() {
+            const passwordInput = document.getElementById('password').value;
+            const confirmPasswordInput = document.getElementById('confirmPassword').value;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/; // At least one uppercase, one number, one symbol, and minimum 8 characters
+            if (!passwordPattern.test(passwordInput)) {
+                alert('Password must be at least 8 characters long, contain at least one uppercase letter, one number, and one special character.');
+                return false;
+            }
+            if (passwordInput !== confirmPasswordInput) {
+                alert('Passwords do not match.');
+                return false;
+            }
+            return true;
+        }
+
+        function handleSignUp(event) {
+            event.preventDefault(); // Prevent form submission
+            if (validatePassword()) {
+                document.getElementById('successMessage').style.display = 'block'; // Show success message
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none'; // Hide after 3 seconds
+                }, 3000);
+            }
+        }
+
+        function socialLogin(platform) {
+            // Display an alert with the platform clicked
+            alert(`You clicked on ${platform} login!`);
+        }
+    </script>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

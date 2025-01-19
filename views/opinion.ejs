@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opinion - Daily Dose</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/opinion.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Add your styles here */
+    .card-container {
+      margin: 80px auto 50px; 
+    }
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card-line {
+      flex: 1;
+      border: none;
+      height: 2px;
+      background-color: #8a8888;
+      margin: 0 10px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .search-bar {
+      width: 300px;
+      padding: 10px;
+      font-size: 12px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #news-articles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .article-card {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 600px;
+      max-width: 100%;
+    }
+
+    .article-image {
+      width: 40%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .article-content {
+      padding: 15px;
+      width: 60%;
+    }
+
+    .article-content h2 {
+      font-size: 1.2rem;
+      margin: 0 0 10px 0;
+    }
+
+    .article-content p {
+      font-size: -1rem;
+      margin: 0 0 10px 0;
+      color: #555;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+    
+ /* General Footer Styles */
+footer {
+   background-color: #222;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   position: relative;
+}
+
+.footer-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Logo Container */
+.scrolling-logo {
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   margin-bottom: 20px;
+   flex-grow: 1;
+   text-align: center;
+}
+
+.logo-link {
+   font-size: 25px;
+   font-weight: bold;
+   color: maroon;
+   text-decoration: none;
+   display: inline-block;
+   white-space: nowrap;
+   position: absolute;
+   animation: bounceLeftRight 5s ease-in-out infinite;
+   transition: color 0.3s ease;
+   border: 2px solid #fff;
+   padding: 5px;
+   border-radius: 10px;
+   color: #bd1515;
+}
+
+/* Bouncing animation for logo */
+@keyframes bounceLeftRight {
+   0% { left: 0; }
+   25% { left: 30%; }
+   50% { left: 70%; }
+   75% { left: 30%; }
+   100% { left: 0; }
+}
+
+/* Navigation Links */
+.footer-links {
+   margin-bottom: 20px;
+}
+
+.footer-link-list {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+}
+
+.footer-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.footer-link-item:hover {
+   color: #c01414;
+}
+
+/* Social Media Icons */
+.social-media-section {
+   margin-bottom: 20px;
+}
+
+.social-media-list {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   padding: 0;
+}
+
+.social-icon-link {
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.social-icon-link:hover {
+   color: #9f2020;
+}
+
+/* Additional Links and Copyright */
+.footer-bottom {
+   margin-top: 20px;
+}
+
+.footer-bottom-links {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.bottom-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.bottom-link-item:hover {
+   color: #a70909;
+}
+
+.footer-copyright {
+   font-size: 12px;
+   color: #bbb;
+   margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+   .footer-link-list, .social-media-list, .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 12px;
+   }
+
+   .footer-copyright {
+      font-size: 10px;
+   }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media screen and (max-width: 480px) {
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 10px;
+   }
+
+   .footer-copyright {
+      font-size: 8px;
+   }
+}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="date" id="current-date"></div>
+    <div class="user-actions">
+      <div class="login-link-container">
+        <a href="/login_signup" class="login-btn">
+          <i class="fas fa-user icon"></i> Login
+        </a>
+      </div>
+      <a href="/FreeTrial" class="free-trial">Free Trial</a>
+      <a href="/subscription" class="btn subscribe">Subscribe</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <div class="logo-container">
+      <a href="/" class="logo">
+        <i class="fas fa-capsules icon"></i> Daily Dose
+      </a>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li>
+          <a href="/opinion" class="nav-link">
+            <i class="fas fa-search search-icon"></i>
+          </a>
+        </li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/india" class="nav-link">India</a></li>
+        <li><a href="/world" class="nav-link">World</a></li>
+        <li><a href="/movies" class="nav-link">Movies</a></li>
+        <li><a href="/sport" class="nav-link">Sport</a></li>
+        <li><a href="/data" class="nav-link">Data</a></li>
+        <li><a href="/health" class="nav-link">Health</a></li>
+        <li><a href="/opinion" class="nav-link active">Opinion</a></li>
+        <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+        <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Card Section for opinion  Title -->
+  <div class="card-container">
+    <div class="title-container">
+      <hr class="card-line">
+      <h1 class="card-title">OPINION</h1>
+      <hr class="card-line">
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search News..." class="search-bar">
+  </div>
+
+  <section class="opinion-articles" id="news-articles">
+    <!-- News articles will be dynamically inserted here -->
+  </section>
+
+
+  <script> 
+    const apiKey = 'aa5b5423bcdd48ae9e9ce6884f79a5ac';
+    const apiUrl = `https://newsapi.org/v2/everything?q=apple&from=2024-12-29&to=2024-12-29&sortBy=popularity&apiKey=${apiKey}`;
+    let articles = [];  // Store articles globally
+  
+    // Fetch news articles from the API
+    async function fetchNews() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+  
+        if (data.articles && data.articles.length > 0) {
+          articles = data.articles; // Save articles globally
+          displayNews(articles);  // Display the articles when first loaded
+        } else {
+          document.getElementById('news-articles').innerHTML = '<p>No articles found.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        document.getElementById('news-articles').innerHTML = '<p>Failed to load articles. Please try again later.</p>';
+      }
+    }
+  
+    // Display articles dynamically in the section
+    function displayNews(articlesToDisplay) {
+      const newsContainer = document.getElementById('news-articles');
+      newsContainer.innerHTML = ''; // Clear any existing articles
+  
+      articlesToDisplay.forEach(article => {
+        const articleCard = document.createElement('div');
+        articleCard.className = 'article-card';
+  
+        const imageUrl = article.urlToImage || 'https://via.placeholder.com/300x200?text=No+Image+Available';
+  
+        articleCard.innerHTML = `
+          <img src="${imageUrl}" alt="${article.title}" class="article-image">
+          <div class="article-content">
+            <h2>${article.title}</h2>
+            <p>${article.description || 'No description available.'}</p>
+            <a href="${article.url}" target="_blank" class="read-more">Read More</a>
+          </div>
+        `;
+        newsContainer.appendChild(articleCard);
+      });
+    }
+  
+    // Filter articles based on the search query
+    function filterArticles() {
+      const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+      const filteredArticles = articles.filter(article =>
+        article.title.toLowerCase().includes(searchQuery) ||
+        (article.description && article.description.toLowerCase().includes(searchQuery))
+      );
+      displayNews(filteredArticles);  // Use the correct display function
+    }
+  
+    // Event listener for search input
+    document.getElementById('search-bar').addEventListener('input', filterArticles);
+  
+    // Fetch news articles when the page loads
+    fetchNews();
+  </script>
+  
+</body>
+
+<script src="/js/script.js"></script>
+<footer>
+  <!-- Logo Container with Animation -->
+  <div class="scrolling-logo">
+     <a href="/" class="logo-link">
+        <i class="fas fa-capsules logo-icon"></i>
+        Daily Dose
+     </a>
+  </div>
+
+  <div class="footer-content">
+     <!-- Navigation Links -->
+     <nav class="footer-links">
+        <ul class="footer-link-list">
+           <li><a href="/" class="footer-link-item">Home</a></li>
+           <li><a href="/india" class="footer-link-item">India</a></li>
+           <li><a href="/world" class="footer-link-item">World</a></li>
+           <li><a href="/movies" class="footer-link-item">Movies</a></li>
+           <li><a href="/sport" class="footer-link-item">Sport</a></li>
+           <li><a href="/data" class="footer-link-item">Data</a></li>
+           <li><a href="/health" class="footer-link-item">Health</a></li>
+           <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+           <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+           <li><a href="/premium" class="footer-link-item">Premium</a></li>
+        </ul>
+     </nav>
+
+     <!-- Social Media Icons -->
+     <div class="social-media-section">
+        <ul class="social-media-list">
+           <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+           <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+           <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+           <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+           <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+           <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+           <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+        </ul>
+     </div>
+
+     <!-- Additional Links and Copyright -->
+     <div class="footer-bottom">
+        <ul class="footer-bottom-links">
+           <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+           <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+           <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+        </ul>
+        <p class="footer-copyright">
+           &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+        </p>
+     </div>
+  </div>
+</footer>
+
+
+
+</html>

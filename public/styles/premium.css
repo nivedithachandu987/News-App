@@ -1,0 +1,89 @@
+/* Premium Page Styles */
+.premium-main {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .premium-main h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .premium-main p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .premium-benefits {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+  
+  .benefit-card {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 25%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .benefit-card i {
+    font-size: 3rem;
+    color: #1e90ff;
+    margin-bottom: 15px;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .benefit-card p {
+    color: #555;
+  }
+  
+  .premium-pricing {
+    margin-top: 50px;
+  }
+  
+  .pricing-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pricing-card h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .pricing-card p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .subscribe-btn {
+    padding: 10px 20px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .subscribe-btn:hover {
+    background: #105d9e;
+  }
+  

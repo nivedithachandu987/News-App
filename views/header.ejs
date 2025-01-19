@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Hub</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header class="header">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <a href="/" class="logo">News Hub</a>
+    </div>
+    
+    <!-- Hamburger Menu -->
+    <div 
+      class="hamburger" 
+      onclick="toggleMenu()" 
+      aria-label="Open menu" 
+      tabindex="0" 
+      onkeypress="if (event.key === 'Enter') toggleMenu()"
+      aria-expanded="false"
+    >
+      ☰
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/india" class="nav-link">India</a></li>
+        <li><a href="/world" class="nav-link">World</a></li>
+        <li><a href="/movies" class="nav-link">Movies</a></li>
+        <li><a href="/sport" class="nav-link">Sport</a></li>
+        <li><a href="/data" class="nav-link">Data</a></li>
+        <li><a href="/health" class="nav-link">Health</a></li>
+        <li><a href="/opinion" class="nav-link">Opinion</a></li>
+        <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+        <li><a href="/business" class="nav-link">Business</a></li>
+        <li><a href="/premium" class="nav-link">Premium</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>

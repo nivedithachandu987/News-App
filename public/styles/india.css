@@ -1,0 +1,206 @@
+.india-hero {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .india-hero h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  
+  .india-hero p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .explore-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .highlight-section {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+  }
+     /* Adjust card-container alignment */
+.card-container {
+  margin: 80px auto 50px; /* Reduced top margin for better position */
+}
+/* Center the title "INDIA" between two lines */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-line {
+  flex: 1; /* Equal line on both sides */
+  border: none;
+  height: 2px; /* Thickness of the line */
+  background-color: #8a8888; /* Color of the line */
+  margin: 0 10px; /* Space between the line and the title */
+}
+
+.card-title {
+  margin: 0; /* Remove any default margin */
+  font-size: 2rem; /* Adjust font size */
+  font-weight: bold;
+  color: #333;
+}
+
+/* New Card below the Title */
+.card-content {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card-content h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Improved article styles */
+.news-article {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px auto;
+  background: #f9f9f9;
+  max-width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.news-article img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.news-article h3 a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news-article h3 a:hover {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+.news-article p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Header improvements for small screens */
+@media (max-width: 768px) {
+  .card-container {
+    margin: 60px auto 30px;
+  }
+
+  .news-article {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .header .nav-menu ul {
+    flex-direction: column;
+  }
+
+  .header .nav-menu li {
+    margin: 5px 0;
+  }
+}
+/* Style the image inside the card */
+.card-image {
+  width: 100%;  /* Makes image responsive */
+  max-height: 250px;  /* Limits image height */
+  object-fit: cover;  /* Ensures image doesn't stretch */
+  border-radius: 8px;  /* Rounded corners */
+  margin-bottom: 15px;  /* Space between image and text */
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Reduced space between title and search bar */
+}
+/* Style for the search bar */
+.search-bar {
+  width: 300px; /* Small size */
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the suggestions container */
+.suggestions-container {
+  font-size: 7px;
+  position: absolute;
+  width: 250px; /* Match search bar width */
+  margin-top: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #696969;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+/* Style for individual suggestion items */
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+  

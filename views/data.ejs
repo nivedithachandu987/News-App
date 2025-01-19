@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data-Daily Dose </title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/data.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  /* General Styles */
+
+
+/* Card Section */
+.card-container {
+  margin: 80px auto 50px;
+}
+
+/* Title Section */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap; /* Allow elements to wrap when screen size is small */
+  gap: 10px; /* Add spacing between elements on small screens */
+}
+
+.card-line {
+  flex: 1;
+  border: none;
+  height: 2px;
+  background-color: #8a8888;
+  margin: 0 10px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Card Content */
+.card-content {
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.card-content:hover {
+  transform: translateY(-10px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Card Image */
+.card-image {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+/* Links Inside Card Content */
+.card-content h2 a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-content h2 a:hover {
+  color: #007BFF;
+}
+
+/* News Articles */
+.news-article img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.news-article h3 a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news-article h3 a:hover {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+/* General Grid for News Articles */
+.news-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+  .card-container {
+    margin: 50px auto 30px;
+  }
+  .card-content {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  .card-title {
+    font-size: 1.5rem;
+  }
+  .card-image {
+    max-height: 150px;
+  }
+  .title-container {
+    flex-direction: column; /* Stack title and lines vertically */
+  }
+  .card-line {
+    width: 60%; /* Adjust line width for smaller screens */
+    margin: 5px 0;
+  }
+}
+
+/* Even Smaller Screens (Phones) */
+@media (max-width: 480px) {
+  .card-container {
+    margin: 30px auto 20px;
+  }
+  .card-content {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-image {
+    max-height: 120px;
+  }
+  .title-container {
+    gap: 5px; /* Reduce spacing for very small screens */
+  }
+}
+
+
+
+ 
+
+
+/* Search container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Reduced space between title and search bar */
+}
+
+/* Style for the search bar */
+.search-bar {
+  width: 300px; /* Small size */
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.card-link {
+  text-decoration: none;
+  color: #000; /* Black color */
+  font-weight: bold;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+  color: #007BFF; /* Blue color on hover */
+}
+
+/* Card section container */
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card styles */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card image */
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Card body */
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-body h3 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card-body p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .card-body h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 576px) {
+  .card-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-body h3 {
+    font-size: 1rem;
+  }
+
+  .card-body p {
+    font-size: 0.85rem;
+  }
+}
+/* Basic styles for the news section */
+.news-section {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* News API Section Styles */
+#news-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Ensure exactly 3 cards per row */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.news-article {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-article:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.news-article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-article h3 {
+  margin: 15px 10px;
+  font-size: 1.25rem;
+  color: #333;
+  text-align: center;
+}
+
+.news-article p {
+  padding: 0 10px;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.news-article a {
+  padding: 10px;
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  display: block;
+}
+
+.news-article a:hover {
+  text-decoration: underline;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  #news-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row on smaller screens */
+  }
+
+  .news-article {
+    flex-direction: column; /* Stack the elements vertically on small screens */
+  }
+
+  .news-article img {
+    width: 100%;
+    height: 150px; /* Adjust image size for smaller screens */
+  }
+
+  .news-article h3 {
+    font-size: 1rem;
+  }
+
+  .news-article p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #news-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row on very small screens */
+  }
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+  }
+
+  header .nav-menu {
+    display: none;
+  }
+
+  header .hamburger {
+    display: flex;
+  }
+
+  .card-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+ /* General Footer Styles */
+ footer {
+   background-color: #222;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   position: relative;
+}
+
+.footer-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Logo Container */
+.scrolling-logo {
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   margin-bottom: 20px;
+   flex-grow: 1;
+   text-align: center;
+}
+
+.logo-link {
+   font-size: 25px;
+   font-weight: bold;
+   color: maroon;
+   text-decoration: none;
+   display: inline-block;
+   white-space: nowrap;
+   position: absolute;
+   animation: bounceLeftRight 5s ease-in-out infinite;
+   transition: color 0.3s ease;
+   border: 2px solid #fff;
+   padding: 5px;
+   border-radius: 10px;
+   color: #bd1515;
+}
+
+/* Bouncing animation for logo */
+@keyframes bounceLeftRight {
+   0% { left: 0; }
+   25% { left: 30%; }
+   50% { left: 70%; }
+   75% { left: 30%; }
+   100% { left: 0; }
+}
+
+/* Navigation Links */
+.footer-links {
+   margin-bottom: 20px;
+}
+
+.footer-link-list {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+}
+
+.footer-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.footer-link-item:hover {
+   color: #c01414;
+}
+
+/* Social Media Icons */
+.social-media-section {
+   margin-bottom: 20px;
+}
+
+.social-media-list {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   padding: 0;
+}
+
+.social-icon-link {
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.social-icon-link:hover {
+   color: #9f2020;
+}
+
+/* Additional Links and Copyright */
+.footer-bottom {
+   margin-top: 20px;
+}
+
+.footer-bottom-links {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.bottom-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.bottom-link-item:hover {
+   color: #a70909;
+}
+
+.footer-copyright {
+   font-size: 12px;
+   color: #bbb;
+   margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+   .footer-link-list, .social-media-list, .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 12px;
+   }
+
+   .footer-copyright {
+      font-size: 10px;
+   }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media screen and (max-width: 480px) {
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 10px;
+   }
+
+   .footer-copyright {
+      font-size: 8px;
+   }
+}
+</style>
+</head>
+
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="date" id="current-date"></div>
+    <div class="user-actions">
+      <div class="login-link-container">
+        <a href="/login_signup" class="login-btn">
+          <i class="fas fa-user icon"></i> Login
+        </a>
+      </div>
+      <a href="/FreeTrial" class="free-trial">Free Trial</a>
+      <a href="/subscription" class="btn subscribe">Subscribe</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <div class="logo-container">
+      <a href="/" class="logo">
+        <i class="fas fa-capsules icon"></i> Daily Dose
+      </a>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li>
+          <a href="/data" class="nav-link">
+            <i class="fas fa-search search-icon"></i>
+          </a>
+        </li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/india" class="nav-link">India</a></li>
+        <li><a href="/world" class="nav-link">World</a></li>
+        <li><a href="/movies" class="nav-link">Movies</a></li>
+        <li><a href="/sport" class="nav-link">Sport</a></li>
+        <li><a href="/data" class="nav-link">Data</a></li>
+        <li><a href="/health" class="nav-link">Health</a></li>
+        <li><a href="/opinion" class="nav-link">Opinion</a></li>
+        <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+        <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Card Section for MOVIES Title -->
+  <div class="card-container">
+    <div class="title-container">
+      <hr class="card-line">
+      <h1 class="card-title">DATA</h1>
+      <hr class="card-line">
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search News..." class="search-bar" oninput="filterArticles()">
+    <div id="suggestions" class="suggestions-container"></div>
+  </div>
+
+
+  <!-- News Section -->
+  <section id="news-container" class="news-section">
+    <!-- News articles will be inserted here -->
+  </section>
+<!-- JavaScript -->
+<script>
+    const apiKey = 'aa5b5423bcdd48ae9e9ce6884f79a5ac';
+    // Updated API URL to the new endpoint
+    const apiUrl = `https://newsapi.org/v2/everything?q=apple&from=2024-12-25&to=2024-12-25&sortBy=popularity&apiKey=${apiKey}`;
+    let allArticles = [];
+  
+    async function fetchNews() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        if (data.status === 'ok') {
+          allArticles = data.articles;
+          displayArticles(allArticles);
+        } else {
+          console.error('Error fetching news:', data.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  
+    function displayArticles(articles) {
+      const newsContainer = document.getElementById('news-container');
+      newsContainer.innerHTML = '';
+      if (articles.length === 0) {
+        newsContainer.innerHTML = `<p>No articles found.</p>`;
+        return;
+      }
+  
+      articles.forEach(article => {
+        const articleElement = document.createElement('div');
+        articleElement.classList.add('news-article');
+        articleElement.innerHTML = `
+          <img src="${article.urlToImage || 'https://via.placeholder.com/300x200'}" alt="Article Image">
+          <h3>${article.title}</h3>
+          <p>${article.description || 'No description available.'}</p>
+          <a href="${article.url}" target="_blank">Read More</a>
+        `;
+        newsContainer.appendChild(articleElement);
+      });
+    }
+  
+    function filterArticles() {
+      const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+      const filteredArticles = allArticles.filter(article =>
+        article.title.toLowerCase().includes(searchQuery) ||
+        (article.description && article.description.toLowerCase().includes(searchQuery))
+      );
+      displayArticles(filteredArticles);
+    }
+  
+    fetchNews(); // Fetch the news when the page loads
+  </script>
+  <footer>
+    <!-- Logo Container with Animation -->
+    <div class="scrolling-logo">
+       <a href="/" class="logo-link">
+          <i class="fas fa-capsules logo-icon"></i>
+          Daily Dose
+       </a>
+    </div>
+  
+    <div class="footer-content">
+       <!-- Navigation Links -->
+       <nav class="footer-links">
+          <ul class="footer-link-list">
+             <li><a href="/" class="footer-link-item">Home</a></li>
+             <li><a href="/india" class="footer-link-item">India</a></li>
+             <li><a href="/world" class="footer-link-item">World</a></li>
+             <li><a href="/movies" class="footer-link-item">Movies</a></li>
+             <li><a href="/sport" class="footer-link-item">Sport</a></li>
+             <li><a href="/data" class="footer-link-item">Data</a></li>
+             <li><a href="/health" class="footer-link-item">Health</a></li>
+             <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+             <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+             <li><a href="/premium" class="footer-link-item">Premium</a></li>
+          </ul>
+       </nav>
+  
+       <!-- Social Media Icons -->
+       <div class="social-media-section">
+          <ul class="social-media-list">
+             <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+             <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+             <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+             <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+             <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+             <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+             <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+          </ul>
+       </div>
+  
+       <!-- Additional Links and Copyright -->
+       <div class="footer-bottom">
+          <ul class="footer-bottom-links">
+             <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+             <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+             <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+          </ul>
+          <p class="footer-copyright">
+             &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+          </p>
+       </div>
+    </div>
+  </footer>
+  
+  
+  
+  <script src="/js/script.js"></script>
+  
+</body>
+
+</html>

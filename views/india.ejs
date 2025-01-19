@@ -1,0 +1,688 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India - Daily Dose</title>
+  <link rel="stylesheet" href="/styles/india.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Adjust card-container alignment */
+.card-container {
+  margin: 80px auto 50px; /* Reduced top margin for better position */
+}
+/* Center the title "INDIA" between two lines */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-line {
+  flex: 1; /* Equal line on both sides */
+  border: none;
+  height: 2px; /* Thickness of the line */
+  background-color: #8a8888; /* Color of the line */
+  margin: 0 10px; /* Space between the line and the title */
+}
+
+.card-title {
+  margin: 0; /* Remove any default margin */
+  font-size: 2rem; /* Adjust font size */
+  font-weight: bold;
+  color: #333;
+}
+
+/* New Card below the Title */
+.card-content {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card-content h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Card Grid Structure */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Individual Card Style */
+.card-content {
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card-content:hover {
+  transform: translateY(-10px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Image Styling */
+.card-image {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+/* Card Title */
+.card-content h2 a {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card-content h2 a:hover {
+  color: #007BFF;
+}
+
+/* Card Description */
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* Improved article styles */
+.news-article {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px auto;
+  background: #f9f9f9;
+  max-width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.news-article img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.news-article h3 a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news-article h3 a:hover {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+.news-article p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Header improvements for small screens */
+@media (max-width: 768px) {
+  .card-container {
+    margin: 60px auto 30px;
+  }
+
+  .news-article {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .header .nav-menu ul {
+    flex-direction: column;
+  }
+
+  .header .nav-menu li {
+    margin: 5px 0;
+  }
+}
+/* Style the image inside the card */
+.card-image {
+  width: 100%;  /* Makes image responsive */
+  max-height: 250px;  /* Limits image height */
+  object-fit: cover;  /* Ensures image doesn't stretch */
+  border-radius: 8px;  /* Rounded corners */
+  margin-bottom: 15px;  /* Space between image and text */
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Reduced space between title and search bar */
+}
+/* Style for the search bar */
+.search-bar {
+  width: 300px; /* Small size */
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the suggestions container */
+.suggestions-container {
+  font-size: 7px;
+  position: absolute;
+  width: 250px; /* Match search bar width */
+  margin-top: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #696969;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+/* Style for individual suggestion items */
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+ /* General Footer Styles */
+ footer {
+   background-color: #222;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   position: relative;
+}
+
+.footer-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Logo Container */
+.scrolling-logo {
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   margin-bottom: 20px;
+   flex-grow: 1;
+   text-align: center;
+}
+
+.logo-link {
+   font-size: 25px;
+   font-weight: bold;
+   color: maroon;
+   text-decoration: none;
+   display: inline-block;
+   white-space: nowrap;
+   position: absolute;
+   animation: bounceLeftRight 5s ease-in-out infinite;
+   transition: color 0.3s ease;
+   border: 2px solid #fff;
+   padding: 5px;
+   border-radius: 10px;
+   color: #bd1515;
+}
+
+/* Bouncing animation for logo */
+@keyframes bounceLeftRight {
+   0% { left: 0; }
+   25% { left: 30%; }
+   50% { left: 70%; }
+   75% { left: 30%; }
+   100% { left: 0; }
+}
+
+/* Navigation Links */
+.footer-links {
+   margin-bottom: 20px;
+}
+
+.footer-link-list {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+}
+
+.footer-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.footer-link-item:hover {
+   color: #c01414;
+}
+
+/* Social Media Icons */
+.social-media-section {
+   margin-bottom: 20px;
+}
+
+.social-media-list {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   padding: 0;
+}
+
+.social-icon-link {
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.social-icon-link:hover {
+   color: #9f2020;
+}
+
+/* Additional Links and Copyright */
+.footer-bottom {
+   margin-top: 20px;
+}
+
+.footer-bottom-links {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.bottom-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.bottom-link-item:hover {
+   color: #a70909;
+}
+
+.footer-copyright {
+   font-size: 12px;
+   color: #bbb;
+   margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+   .footer-link-list, .social-media-list, .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 12px;
+   }
+
+   .footer-copyright {
+      font-size: 10px;
+   }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media screen and (max-width: 480px) {
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 10px;
+   }
+
+   .footer-copyright {
+      font-size: 8px;
+   }
+}
+  </style>
+  </style>
+</head>
+<body>
+ <!-- Card Section for INDIA Title -->
+<div class="card-container">
+  <div class="title-container">
+    <hr class="card-line">
+    <h1 class="card-title">INDIA</h1>
+    <hr class="card-line">
+  </div>
+</div>
+<!-- Search Bar -->
+<div class="search-container">
+  <input type="text" id="search-bar" placeholder="Search News..." class="search-bar">
+  <div id="suggestions" class="suggestions-container"></div>
+</div>
+
+
+<!-- Second Card -->
+<div class="card-content">
+  <h2><a href="https://www.thehindu.com/news/national/our-government-strengthening-constitution-congress-repeatedly-wounded-it-after-tasting-blood-pm-modi/article68985826.ece">"PM Modi Accuses Congress of Undermining India's Constitutional Unity"</a></h2>
+  <img src="pm.jpg" alt="India Freedom" class="card-image">
+  <p>India's remarkable progress in improving freedom standards has earned it a top spot in the 2024 global freedom index. The nation is now ranked 4th globally.</p>
+</div>
+<!-- Sixth Card -->
+<div class="card-content">
+  <h2><a href="https://www.thehindu.com/news/national/ram-lalla-consecrated-at-ayodhya-temple-extraordinary-moment-says-pm-modi/article67765107.ece">"PM Modi says ‘extraordinary moment’ after unveiling Lord Ram idol at Ayodhya"</a></h2>
+  <img src="ram.jpg" alt="Chandrayaan Mission" class="card-image">
+  <p>India's Chandrayaan mission marks a significant leap in space exploration, highlighting its advancements in technology and innovation.</p>
+</div>
+<!-- New Card Below Title -->
+<div class="card-content">
+  <h2><a href="https://www.ndtv.com/india-news/one-nation-one-election-in-lok-sabha-congress-two-thirds-majority-jab-at-bjp-over-one-nation-one-poll-7268287">Congress Takes a Jab at BJP Over 'One Nation, One Poll'</a></h2>
+  <img src="download.jpg" alt="India Culture" class="card-image"> <!-- Image added here -->
+  <p>New Delhi: The Lok Sabha on Tuesday held a division vote to introduce two bills to amend the Constitution and permit simultaneous federal and state polls, as part of the ruling BJP's 'one nation, one election' push.</p>
+</div>
+
+
+
+<!-- Third Card -->
+<div class="card-content">
+  <h2><a href="https://www.ndtv.com/india-news/reopened-sambhal-temple-represents-truth-of-our-history-cm-adityanath-7254016">"Yogi Adityanath Marks 'Our History' as Sambhal Temple Reopens After 46 Years"</a></h2>
+  <img src="yogi.jpg" alt="India and US Defense" class="card-image">
+  <p>India and the United States have signed a landmark defense agreement that will strengthen bilateral ties and foster military cooperation.</p>
+</div>
+<!-- Fourth Card -->
+<div class="card-content">
+  <h2><a href="https://www.ndtv.com/india-news/amit-shah-br-ambedkar-congress-vs-bjp-on-amit-shahs-fashion-remark-on-br-ambedkar-7274817">"Ambedkar No Less Than God": Opposition Slams Amit Shah's "Fashion" Remark</a></h2>
+  <img src="hk.webp" alt="G20 Summit" class="card-image">
+  <p>While the Congress has accused Mr Shah of insulting the architect of the Constitution, the BJP has alleged that the Opposition party was circulating clipped videos and playing cheap tricks.</p>
+</div>
+
+<!-- Fifth Card -->
+<div class="card-content">
+  <h2><a href="https://www.thehindu.com/sport/cricket/ravichandran-ashwin-announces-retirement-from-international-cricket/article68999004.ece">Ravichandran Ashwin announces retirement from international cricket</a></h2>
+  <img src="India_England_Cricket_02106.jpg" alt="Make in India" class="card-image">
+  <p>The spin-master ends his Test career with 537 wickets at an average of 24 in 106 Test matches, the second-highest wicket-taker from India</p>
+</div>
+
+<!-- Sixth Card -->
+<div class="card-content">
+  <h2><a href="https://timesofindia.indiatimes.com/technology/tech-news/how-an-alert-sbi-staff-saved-61-year-old-from-losing-rs-13-lakh-to-digital-arrest-scam/articleshow/115790305.cms">Alert SBI Staff Saves 61-Year-Old from Rs 13-Lakh 'Digital Arrest' Scam</a></h2>
+  <img src="sbi.jpg" alt="SBI" class="card-image">
+  <p>An attentive SBI employee thwarted a scam attempt where fraudsters targeted a 61-year-old, claiming a "digital arrest." The quick intervention saved the victim from losing ₹13 lakh.</p>
+</div>
+
+<!-- Seventh Card -->
+<div class="card-content">
+  <h2><a href="https://www.ndtv.com/entertainment/indias-official-entry-laapataa-ladies-out-of-oscars-2025-race-7272710"><i>Laapataa Ladies</i> Out Of Oscar Race
+    Laapataa Ladies Out Of Oscar Race</a></h2>
+  <img src="po.avif" alt="Smart Cities" class="card-image">
+  <p>An attentive SBI employee thwarted a scam attempt where fraudsters targeted a 61-year-old, claiming a "digital arrest." The quick intervention saved the victim from losing ₹13 lakh.</p>
+</div>
+
+<!-- Eighth Card -->
+<div class="card-content">
+  <h2><a href="https://www.thehindubusinessline.com/news/worlds-largest-healthcare-scheme-ayushman-bharat-turns-5/article65634112.ece">"Congress And Its Rotten Ecosystem...": PM's Sharp Counter On Ambedkar Row"</a></h2>
+  <img src="er.webp" alt="Ayushman Bharat" class="card-image">
+  <p>PM Modi accused Congress of trying to erase BR Ambedkar’s legacy and disrespecting SC/ST communities. In a thread on X, he criticized their "malicious lies" and "dirty tricks" to hide past misdeeds.</p>
+</div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="date" id="current-date"></div>
+    <div class="user-actions">
+      <div class="login-link-container">
+        <a href="/login_signup" class="login-btn">
+          <i class="fas fa-user icon"></i> Login
+        </a>
+      </div>
+      <a href="/FreeTrial" class="free-trial">Free Trial</a>
+      <a href="/subscription" class="btn subscribe">Subscribe</a>
+      <button
+        class="hamburger"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <div class="logo-container">
+      <a href="/" class="logo">
+        <i class="fas fa-capsules icon"></i>
+        Daily Dose
+      </a>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li>
+        <a href="/india" class="nav-link">
+          <i class="fas fa-search search-icon"></i>
+        </a>
+      </li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/india" class="nav-link">India</a></li>
+        <li><a href="/world" class="nav-link">World</a></li>
+        <li><a href="/movies" class="nav-link">Movies</a></li>
+        <li><a href="/sport" class="nav-link">Sport</a></li>
+        <li><a href="/data" class="nav-link">Data</a></li>
+        <li><a href="/health" class="nav-link">Health</a></li>
+        <li><a href="/opinion" class="nav-link">Opinion</a></li>
+        <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+        <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- News Section -->
+  <section id="news-container" class="news-section">
+    <!-- News articles will be inserted here -->
+  </section>
+
+  <script>
+    const apiKey = 'aa5b5423bcdd48ae9e9ce6884f79a5ac';
+    const apiUrl = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=' + apiKey;
+
+    async function fetchNews() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+          const articles = data.articles;
+          const newsContainer = document.getElementById('news-container');
+
+          articles.forEach(article => {
+            const articleElement = document.createElement('div');
+            articleElement.classList.add('news-article');
+
+            const articleImage = article.urlToImage ? `<img src="${article.urlToImage}" alt="Article Image" class="article-image">` : '';
+            
+            articleElement.innerHTML = `
+              ${articleImage}
+              <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+              <p>${article.description}</p>
+            `;
+
+            newsContainer.appendChild(articleElement);
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    }
+
+    // Fetch and display news articles
+    fetchNews();
+
+   
+  </script>
+  <script>
+    // JavaScript for search bar functionality
+    const searchBar = document.getElementById('search-bar');
+    const suggestionsContainer = document.getElementById('suggestions');
+    const articles = document.querySelectorAll('.card-content');
+  
+    // Example data for suggestions
+    const articleTitles = [
+      "PM Modi Accuses Congress of Undermining India's Constitutional Unity",
+      "PM Modi says ‘extraordinary moment’ after unveiling Lord Ram idol at Ayodhya",
+      "Congress Takes a Jab at BJP Over 'One Nation, One Poll'",
+      "Yogi Adityanath Marks 'Our History' as Sambhal Temple Reopens After 46 Years",
+      "Ambedkar No Less Than God: Opposition Slams Amit Shah's 'Fashion' Remark",
+      "Ravichandran Ashwin announces retirement from international cricket",
+      "Alert SBI Staff Saves 61-Year-Old from Rs 13-Lakh 'Digital Arrest' Scam",
+      "Laapataa Ladies Out Of Oscar Race"
+    ];
+  
+    // Event listener for input in the search bar
+    searchBar.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      // Display suggestions
+      if (searchTerm) {
+        suggestionsContainer.style.display = 'block';
+        const filteredSuggestions = articleTitles.filter((title) =>
+          title.toLowerCase().includes(searchTerm)
+        );
+        suggestionsContainer.innerHTML = filteredSuggestions
+          .map((title) => `<div class="suggestion-item">${title}</div>`)
+          .join('');
+      } else {
+        suggestionsContainer.style.display = 'none';
+        suggestionsContainer.innerHTML = '';
+      }
+  
+      // Filter visible articles
+      articles.forEach((article) => {
+        const titleElement = article.querySelector('h2');
+        const titleText = titleElement.textContent.toLowerCase();
+        if (titleText.includes(searchTerm)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  
+    // Hide suggestions on click outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-container')) {
+        suggestionsContainer.style.display = 'none';
+      }
+    });
+  
+    // Click event for suggestion items
+    suggestionsContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('suggestion-item')) {
+        const selectedText = e.target.textContent;
+        searchBar.value = selectedText;
+        suggestionsContainer.style.display = 'none';
+  
+        // Filter articles based on selected suggestion
+        articles.forEach((article) => {
+          const titleElement = article.querySelector('h2');
+          const titleText = titleElement.textContent.toLowerCase();
+          if (titleText === selectedText.toLowerCase()) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
+  <footer>
+    <!-- Logo Container with Animation -->
+    <div class="scrolling-logo">
+       <a href="/" class="logo-link">
+          <i class="fas fa-capsules logo-icon"></i>
+          Daily Dose
+       </a>
+    </div>
+  
+    <div class="footer-content">
+       <!-- Navigation Links -->
+       <nav class="footer-links">
+          <ul class="footer-link-list">
+             <li><a href="/" class="footer-link-item">Home</a></li>
+             <li><a href="/india" class="footer-link-item">India</a></li>
+             <li><a href="/world" class="footer-link-item">World</a></li>
+             <li><a href="/movies" class="footer-link-item">Movies</a></li>
+             <li><a href="/sport" class="footer-link-item">Sport</a></li>
+             <li><a href="/data" class="footer-link-item">Data</a></li>
+             <li><a href="/health" class="footer-link-item">Health</a></li>
+             <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+             <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+             <li><a href="/premium" class="footer-link-item">Premium</a></li>
+          </ul>
+       </nav>
+  
+       <!-- Social Media Icons -->
+       <div class="social-media-section">
+          <ul class="social-media-list">
+             <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+             <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+             <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+             <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+             <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+             <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+             <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+          </ul>
+       </div>
+  
+       <!-- Additional Links and Copyright -->
+       <div class="footer-bottom">
+          <ul class="footer-bottom-links">
+             <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+             <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+             <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+          </ul>
+          <p class="footer-copyright">
+             &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+          </p>
+       </div>
+    </div>
+  </footer>
+  
+  
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>

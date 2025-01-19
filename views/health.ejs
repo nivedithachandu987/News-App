@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health - Daily Dose</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/health.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+   .card-container {
+  margin: 80px auto 50px; /* Reduced top margin for better position */
+}
+/* Center the title "INDIA" between two lines */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-line {
+  flex: 1; /* Equal line on both sides */
+  border: none;
+  height: 2px; /* Thickness of the line */
+  background-color: #8a8888; /* Color of the line */
+  margin: 0 10px; /* Space between the line and the title */
+}
+
+.card-title {
+  margin: 0; /* Remove any default margin */
+  font-size: 2rem; /* Adjust font size */
+  font-weight: bold;
+  color: #333;
+}
+/* Search container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Reduced space between title and search bar */
+}
+
+/* Style for the search bar */
+.search-bar {
+  width: 300px; /* Small size */
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* General Styles for Card Section */
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Card Styles */
+.card {
+  flex: 1 1 calc(33.33% - 20px); /* Allows three cards in a row with spacing */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 10px auto;
+  transition: transform 0.2s;
+}
+/* Card Body Styles */
+.card-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.card-body h3 {
+  font-family: 'Arial', sans-serif; /* Change to desired font family */
+  font-size: 18px; /* Slightly larger for headlines */
+  font-weight: bold;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #333; /* Darker color for better readability */
+}
+
+.card-body p {
+  font-family: 'Georgia', serif; /* Elegant serif font for body text */
+  font-size: 16px; /* Standard size for readability */
+  color: #555; /* Softer text color for balance */
+  margin-bottom: 0;
+}
+
+
+
+/* Image Styles */
+.card-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Card Body Styles */
+.card-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.card-body h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.card-body p {
+  font-size: 10px;
+  color: #212121;
+  margin-bottom: 0;
+}
+
+.card-link {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Two cards in a row for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* One card per row for very small screens */
+  }
+}
+
+ /* General Footer Styles */
+ footer {
+   background-color: #222;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   position: relative;
+}
+
+.footer-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Logo Container */
+.scrolling-logo {
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   margin-bottom: 20px;
+   flex-grow: 1;
+   text-align: center;
+}
+
+.logo-link {
+   font-size: 25px;
+   font-weight: bold;
+   color: maroon;
+   text-decoration: none;
+   display: inline-block;
+   white-space: nowrap;
+   position: absolute;
+   animation: bounceLeftRight 5s ease-in-out infinite;
+   transition: color 0.3s ease;
+   border: 2px solid #fff;
+   padding: 5px;
+   border-radius: 10px;
+   color: #bd1515;
+}
+
+/* Bouncing animation for logo */
+@keyframes bounceLeftRight {
+   0% { left: 0; }
+   25% { left: 30%; }
+   50% { left: 70%; }
+   75% { left: 30%; }
+   100% { left: 0; }
+}
+
+/* Navigation Links */
+.footer-links {
+   margin-bottom: 20px;
+}
+
+.footer-link-list {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+}
+
+.footer-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.footer-link-item:hover {
+   color: #c01414;
+}
+
+/* Social Media Icons */
+.social-media-section {
+   margin-bottom: 20px;
+}
+
+.social-media-list {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   padding: 0;
+}
+
+.social-icon-link {
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.social-icon-link:hover {
+   color: #9f2020;
+}
+
+/* Additional Links and Copyright */
+.footer-bottom {
+   margin-top: 20px;
+}
+
+.footer-bottom-links {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.bottom-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.bottom-link-item:hover {
+   color: #a70909;
+}
+
+.footer-copyright {
+   font-size: 12px;
+   color: #bbb;
+   margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+   .footer-link-list, .social-media-list, .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 12px;
+   }
+
+   .footer-copyright {
+      font-size: 10px;
+   }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media screen and (max-width: 480px) {
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 10px;
+   }
+
+   .footer-copyright {
+      font-size: 8px;
+   }
+}
+
+  </style>
+</head>
+<body>
+    <header class="header">
+        <div class="date" id="current-date"></div>
+        <div class="user-actions">
+            <div class="login-link-container">
+                <a href="/login_signup" class="login-btn">
+                    <i class="fas fa-user icon"></i> Login
+                </a>
+            </div>
+            <a href="/FreeTrial" class="free-trial">Free Trial</a>
+            <a href="/subscription" class="btn subscribe">Subscribe</a>
+            <button
+                class="hamburger"
+                onclick="toggleMenu()"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="logo-container">
+            <a href="/" class="logo">
+              <i class="fas fa-capsules icon"></i>
+              Daily Dose
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+              <li>
+                <a href="/health" class="nav-link">
+                  <i class="fas fa-search search-icon"></i>
+                </a>
+              </li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/india" class="nav-link">India</a></li>
+                <li><a href="/world" class="nav-link">World</a></li>
+                <li><a href="/movies" class="nav-link">Movies</a></li>
+                <li><a href="/sport" class="nav-link">Sport</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/health" class="nav-link active">Health</a></li>
+                <li><a href="/opinion" class="nav-link">Opinion</a></li>
+                <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+                <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+            </ul>
+        </nav>
+    </header>
+ <!-- Card Section for Health Title -->
+ <div class="card-container">
+    <div class="title-container">
+      <hr class="card-line">
+      <h1 class="card-title">HEALTH</h1>
+      <hr class="card-line">
+    </div>
+  </div>
+   <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search News..." class="search-bar">
+    <div id="suggestions" class="suggestions-container"></div>
+  </div>
+<!-- Card Section -->
+<div class="card-section">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="children.jpg" alt="Card Image 1" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://www.thehindu.com/sci-tech/health/a-global-polio-resurgence-and-the-need-to-reevaluate-the-basics/article69026816.ece" class="card-link">A global polio resurgence and the need to reevaluate the basics</a></h3>
+        <p>Children show their ink-marked fingers after being administered with polio drops by healthcare workers as part of the Pulse Polio Program, at New Gardiner Road Hospital in New Delhi.</p>
+      </div>
+    </div>
+  
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="beta.webp" alt="Card Image 2" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/popular-sleeping-pill-linked-to-reduced-alzheimers-protein-buildup-study-reveals/articleshow/116717846.cms" class="card-link">Popular sleeping pill linked to reduced Alzheimer's protein buildup, study reveals</a></h3>
+        <p>Popular sleeping pill linked to reduced Alzheimer's protein buildup, study reveals</p>
+      </div>
+    </div>
+  
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="heart.webp" alt="Card Image 3" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/blood-transfusions-can-help-save-heart-attack-patients-with-anemia-study/articleshow/116721765.cms" class="card-link">Blood transfusions can help save heart attack patients with anemia: Study</a></h3>
+        <p>Blood transfusions can be life saving..</p>
+      </div>
+    </div>
+    
+      <!-- Card 4 -->
+      <div class="card">
+        <img src="pump.jpg" alt="Card Image 4" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/sci-tech/health/cpr-can-help-prevent-deaths-the-need-for-more-awareness-training-of-this-life-saving-procedure/article69026284.ece" class="card-link"> "CPR saves lives: The need for awareness and training."</a></h3>
+          <p>Trained bystanders can bridge the critical gap between the occurrence of a sudden cardiac arrest and the arrival of medical help.</p>
+        </div>
+      </div>
+    
+      <!-- Card 5 -->
+      <div class="card">
+        <img src="getty.jpg" alt="Card Image 5" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.bbc.com/news/world-62263456" class="card-link">A Common Sleeping Pill May Reduce The Buildup of Alzheimer's Proteins, Study Finds</a></h3>
+          <p>Global health experts are concerned about the rapid evolution of virus strains and their implications.</p>
+        </div>
+      </div>
+     <!-- Card 6-->
+     <div class="card">
+      <img src="socio-economic.webp" alt="Card Image 7" class="card-image">
+      <div class="card-body">
+        <h3><a href="" class="card-link">Societal inequality may reduce brain health: Study</a></h3>
+        <p>Innovative therapies are offering hope to patients with aggressive forms of cancer.</p>
+      </div>
+    </div>
+      <!-- Card 7 -->
+      <div class="card">
+        <img src="hepatitis.jpg" alt="Card Image 6" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/news/cities/Kochi/hepatitis-a-outbreak-control-measures-activated-in-affected-wards-in-kalamassery/article69019277.ece" class="card-link">
+            Hepatitis A outbreak: Control measures activated in affected wards in Kalamassery</a></h3>
+          <p>Studies reveal that practicing yoga regularly can significantly reduce stress and anxiety.</p>
+        </div>
+      </div>
+    
+      <!-- Card 8 -->
+      <div class="card">
+        <img src="covid.jpg" alt="Card Image 5" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/sci-tech/health/pandemic-preparedness-learning-from-covid-19-and-nipah-to-build-a-resilient-future/article69025846.ece?cx_testId=78&cx_testVariant=cx_1&cx_artPos=1&cx_experienceId=EXKWL3XAQS9E&cx_experienceActionId=showRecommendationsOB64H54QYBJE104#cxrecs_s" class="card-link">"Pandemic preparedness: Lessons from COVID-19 and Nipah for a resilient future."</a></h3>
+          <p>"India should expand the ‘One Health’ model, creating centres to monitor disease outbreaks, study environmental factors, and track animal-human transmission to prevent future pandemics."</p>
+        </div>
+      </div>
+     <!-- Card 9-->
+     <div class="card">
+      <img src="Type2Diabetes.jpg" alt="Card Image 7" class="card-image">
+      <div class="card-body">
+        <h3><a href="" class="card-link">"65 new drug prices and 13 ceiling prices notified."</a></h3>
+        <p>The National Pharmaceutical Pricing Authority has fixed the prices of drugs used to treat Type 2 diabetes, high cholesterol, bacterial infections, and painkillers</p>
+      </div>
+    </div>
+      <!-- Card 10 -->
+      <div class="card">
+        <img src="yoga.jpg" alt="Card Image 6" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/news/national/international-yoga-day-live-updates-pm-modi-in-srinagar-jk/article68315122.ece" class="card-link">International Yoga Day 2024 highlights: Yoga helps us live in the present moment without the baggage of the past: PM Modi</a></h3>
+          <p>Studies reveal that practicing yoga regularly can significantly reduce stress and anxiety.</p>
+        </div>
+      </div>
+      <!-- Card 11 -->
+      <div class="card">
+        <img src="cla.jpg" alt="Card Image 7" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/sci-tech/health/local-clinical-trial-waiver-for-selected-drugs-is-a-double-edged-sword-says-experts/article69022739.ece" class="card-link">Experts warn: Local clinical trial waiver for select drugs is a double-edged sword.</a></h3>
+          <p>The move to give faster access to medicines for patients in India is a double edged sword warn experts, following the Central Licensing Authority’s (CLA) recent specification where six countries under Rule 101 of the New Drugs and Clinical Trials Rules (NDCTR), 2019 are considered for local clinical trial waivers during the approval process of five categories of new drugs.</p>
+        </div>
+      </div>
+    <!-- Card 12-->
+    <div class="card">
+      <img src="digital.jpg" alt="Card Image 1" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://www.thehindu.com/sci-tech/health/sleep-disorders-in-children-how-to-recognise-and-handle-them/article69033393.ece" class="card-link">Sleep disorders in children: how to recognise and handle them</a></h3>
+        <p>In this digital era, when forces to disrupt sleep are overwhelming, we must learn to prioritise sleep and instil healthy sleep habits in our children, who are our future.</p>
+      </div>
+    </div>
+  
+    <!-- Card 13 -->
+    <div class="card">
+      <img src="sleep.webp" alt="Card Image 2" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://www.thehindu.com/sci-tech/health/health-matters-newsletter-sleepless-nights-heres-a-drug-to-help/article69022370.ece" class="card-link">Sleepless nights? Here’s a drug to help</a></h3>
+        <p>On a new drug to help with obstructive sleep apnoea, the end of the Marburg virus outbreak in Rwanda, health insurance premiums becoming increasingly expensive, and more.</p>
+      </div>
+    </div>
+  
+    <!-- Card 14 -->
+    <div class="card">
+      <img src="covid-19.jpg" alt="Card Image 3" class="card-image">
+      <div class="card-body">
+        <h3><a href="https://www.thehindu.com/opinion/op-ed/the-advent-of-a-holistic-approach-to-one-health/article68051165.ece" class="card-link">The advent of a holistic approach to ‘one health’</a></h3>
+        <p>The ‘National One Health Mission’ is the result of recognition that only a coordinated approach will ensure a better response to disease outbreaks</p>
+      </div>
+    </div>
+    
+      <!-- Card 15 -->
+      <div class="card">
+        <img src="car.jpg" alt="Card Image 8" class="card-image">
+        <div class="card-body">
+          <h3><a href="https://www.thehindu.com/sci-tech/health/aiims-delhi-developing-low-cost-adaptive-cellular-therapy-for-treatment-of-multiple-myeloma/article69018622.ece" class="card-link">"AIIMS Delhi develops low-cost cellular therapy for multiple myeloma treatment."</a></h3>
+          <p>Maintaining a balanced diet is key to preventing chronic illnesses and promoting longevity.</p>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  
+    <section class="news-grid" id="news-grid">
+        <!-- News cards will be populated here -->
+    </section>
+
+    <script>
+      // Function to filter cards based on search input
+      const searchBar = document.getElementById('search-bar');
+      const cards = document.querySelectorAll('.card');
+    
+      searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+    
+        // Loop through all cards and toggle their visibility
+        cards.forEach((card) => {
+          const cardText = card.textContent.toLowerCase();
+          if (cardText.includes(searchTerm)) {
+            card.style.display = 'block'; // Show card
+          } else {
+            card.style.display = 'none'; // Hide card
+          }
+        });
+      });
+    </script>
+    
+    <footer>
+      <!-- Logo Container with Animation -->
+      <div class="scrolling-logo">
+         <a href="/" class="logo-link">
+            <i class="fas fa-capsules logo-icon"></i>
+            Daily Dose
+         </a>
+      </div>
+    
+      <div class="footer-content">
+         <!-- Navigation Links -->
+         <nav class="footer-links">
+            <ul class="footer-link-list">
+               <li><a href="/" class="footer-link-item">Home</a></li>
+               <li><a href="/india" class="footer-link-item">India</a></li>
+               <li><a href="/world" class="footer-link-item">World</a></li>
+               <li><a href="/movies" class="footer-link-item">Movies</a></li>
+               <li><a href="/sport" class="footer-link-item">Sport</a></li>
+               <li><a href="/data" class="footer-link-item">Data</a></li>
+               <li><a href="/health" class="footer-link-item">Health</a></li>
+               <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+               <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+               <li><a href="/premium" class="footer-link-item">Premium</a></li>
+            </ul>
+         </nav>
+    
+         <!-- Social Media Icons -->
+         <div class="social-media-section">
+            <ul class="social-media-list">
+               <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+               <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+               <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+               <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+               <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+               <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+               <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+            </ul>
+         </div>
+    
+         <!-- Additional Links and Copyright -->
+         <div class="footer-bottom">
+            <ul class="footer-bottom-links">
+               <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+               <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+               <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+            </ul>
+            <p class="footer-copyright">
+               &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+            </p>
+         </div>
+      </div>
+    </footer>
+    
+    
+    
+   
+     <script src="/js/script.js"></script>
+</body>
+</html>

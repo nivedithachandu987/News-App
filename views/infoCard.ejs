@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Information Page</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #800000; /* Maroon */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color:#800000 ; /* Red */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .menu button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .menu button:hover {
+            background-color:#ff0000; /* Maroon */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto; /* Added margin to push the container down */
+            padding: 20px;
+        }
+
+        .content {
+            background-color: #fff;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #800000; /* Maroon */
+        }
+
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: #fff;
+            margin-top: 40px; /* Added margin to position the card lower */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #800000; /* Maroon */
+        }
+
+       
+ /* General Footer Styles */
+footer {
+   background-color: #222;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   position: relative;
+}
+
+.footer-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Logo Container */
+.scrolling-logo {
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   margin-bottom: 20px;
+   flex-grow: 1;
+   text-align: center;
+}
+
+.logo-link {
+   font-size: 25px;
+   font-weight: bold;
+   color: maroon;
+   text-decoration: none;
+   display: inline-block;
+   white-space: nowrap;
+   position: absolute;
+   animation: bounceLeftRight 5s ease-in-out infinite;
+   transition: color 0.3s ease;
+   border: 2px solid #fff;
+   padding: 5px;
+   border-radius: 10px;
+   color: #bd1515;
+}
+
+/* Bouncing animation for logo */
+@keyframes bounceLeftRight {
+   0% { left: 0; }
+   25% { left: 30%; }
+   50% { left: 70%; }
+   75% { left: 30%; }
+   100% { left: 0; }
+}
+
+/* Navigation Links */
+.footer-links {
+   margin-bottom: 20px;
+}
+
+.footer-link-list {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+}
+
+.footer-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.footer-link-item:hover {
+   color: #c01414;
+}
+
+/* Social Media Icons */
+.social-media-section {
+   margin-bottom: 20px;
+}
+
+.social-media-list {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   padding: 0;
+}
+
+.social-icon-link {
+   color: #fff;
+   font-size: 20px;
+   text-decoration: none;
+}
+
+.social-icon-link:hover {
+   color: #9f2020;
+}
+
+/* Additional Links and Copyright */
+.footer-bottom {
+   margin-top: 20px;
+}
+
+.footer-bottom-links {
+   list-style: none;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.bottom-link-item {
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.bottom-link-item:hover {
+   color: #a70909;
+}
+
+.footer-copyright {
+   font-size: 12px;
+   color: #bbb;
+   margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+   .footer-link-list, .social-media-list, .footer-bottom-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 12px;
+   }
+
+   .footer-copyright {
+      font-size: 10px;
+   }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media screen and (max-width: 480px) {
+   .footer-link-item, .social-icon-link, .bottom-link-item {
+      font-size: 10px;
+   }
+
+   .footer-copyright {
+      font-size: 8px;
+   }
+}
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu button {
+                margin-bottom: 10px;
+                width: 90%;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .menu button {
+                font-size: 0.9rem;
+            }
+
+            .content h2 {
+                font-size: 1.3rem;
+            }
+
+            footer {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="date" id="current-date"></div>
+     
+ <div class="user-actions">
+            <div class="login-link-container">
+                <a href="#" class="login-btn">
+                    <i class="fas fa-user icon"></i> Login
+                </a>
+            </div>
+            <a href="/infoCard.js" class="free-trial">Free Trial</a>
+            <a href="/subscription" class="btn subscribe">Subscribe</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+     
+        <div class="logo-container">
+            <a href="/" class="logo">
+                <i class="fas fa-capsules icon"></i>
+                Daily Dose
+            </a>
+        </div>
+     
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/premium" class="nav-link"><i class="fas fa-search search-icon"></i></a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/india" class="nav-link">India</a></li>
+                <li><a href="/world" class="nav-link">World</a></li>
+                <li><a href="/movies" class="nav-link">Movies</a></li>
+                <li><a href="/sport" class="nav-link">Sport</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/health" class="nav-link">Health</a></li>
+                <li><a href="/opinion" class="nav-link">Opinion</a></li>
+                <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+                <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+            </ul>
+        </nav>
+    </header>
+  
+    <div class="container">
+        <!-- Menu -->
+        <nav class="menu">
+            <button onclick="loadContent('issue')">Current Issue</button>
+            <button onclick="loadContent('terms')">Terms of Use</button>
+            <button onclick="loadContent('privacy')">Privacy Policy</button>
+        </nav>
+
+        <!-- Content Section -->
+        <div class="content" id="content">
+            <h2>Welcome</h2>
+            <p>Click on any section above to view its details dynamically.</p>
+        </div>
+
+        <!-- Card Section -->
+        <div class="card">
+            <h2>Additional Information</h2>
+            <p>This section can be used to display additional information or features related to the content.</p>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Logo Container with Animation -->
+        <div class="scrolling-logo">
+           <a href="/" class="logo-link">
+              <i class="fas fa-capsules logo-icon"></i>
+              Daily Dose
+           </a>
+        </div>
+      
+        <div class="footer-content">
+           <!-- Navigation Links -->
+           <nav class="footer-links">
+              <ul class="footer-link-list">
+                 <li><a href="/" class="footer-link-item">Home</a></li>
+                 <li><a href="/india" class="footer-link-item">India</a></li>
+                 <li><a href="/world" class="footer-link-item">World</a></li>
+                 <li><a href="/movies" class="footer-link-item">Movies</a></li>
+                 <li><a href="/sport" class="footer-link-item">Sport</a></li>
+                 <li><a href="/data" class="footer-link-item">Data</a></li>
+                 <li><a href="/health" class="footer-link-item">Health</a></li>
+                 <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+                 <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+                 <li><a href="/premium" class="footer-link-item">Premium</a></li>
+              </ul>
+           </nav>
+      
+           <!-- Social Media Icons -->
+           <div class="social-media-section">
+              <ul class="social-media-list">
+                 <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+                 <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+                 <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+                 <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+                 <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+                 <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+                 <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+              </ul>
+           </div>
+      
+           <!-- Additional Links and Copyright -->
+           <div class="footer-bottom">
+              <ul class="footer-bottom-links">
+                 <li><a href="/current-issue" class="bottom-link-item">Current Issue</a></li>
+                 <li><a href="/terms" class="bottom-link-item">Terms of Use</a></li>
+                 <li><a href="/privacy" class="bottom-link-item">Privacy Policy</a></li>
+              </ul>
+              <p class="footer-copyright">
+                 &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+              </p>
+           </div>
+        </div>
+      </footer>
+      <script>
+        function loadContent(section) {
+            const content = document.getElementById("content");
+    
+            if (section === "issue") {
+                content.innerHTML = `
+                    <h2>Current Issue</h2>
+                    <p>
+                        Explore the latest updates, news, and current affairs. Stay informed about the most pressing issues of today.
+                    </p>
+                    <p>
+                        Our current issue covers a range of topics including politics, technology, health, and more.
+                    </p>
+                    <h3>Share Your Thoughts</h3>
+                    <form id="feedback-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="comment">Comment:</label>
+                        <textarea id="comment" name="comment" rows="4" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                `;
+                document.getElementById("feedback-form").onsubmit = function(event) {
+                    event.preventDefault();
+                    const name = document.getElementById("name").value;
+                    const comment = document.getElementById("comment").value;
+                    alert(`Thank you, ${name}, for your comment: "${comment}"`);
+                };
+            } else if (section === "terms") {
+                content.innerHTML = `
+                    <h2>Terms of Use</h2>
+                    <p>
+                        Please read these Terms and Conditions of Use (“Terms”, “Terms of Use", or “Agreement”) carefully before using the Site or Service, as they affect your legal rights and obligations.
+                    </p>
+                    <h3>Usage Rights</h3>
+                    <p>
+                        Daily Dose is the sole and absolute owner of & maintains the below sites:
+                    </p>
+                    <ul>
+                        <li><a href="http://www.dailydose.com">www.dailydose.com</a></li>
+                        <li><a href="http://m.dailydose.com">m.dailydose.com</a></li>
+                        <li><a href="http://www.dailydosebusinessline.com">www.dailydosebusinessline.com</a></li>
+                        <li><a href="http://sportstar.dailydose.com">sportstar.dailydose.com</a></li>
+                        <li><a href="http://frontline.dailydose.com">frontline.dailydose.com</a></li>
+                        <li><a href="http://ywc.dailydose.com">ywc.dailydose.com</a></li>
+                        <li><a href="http://ywepaper.dailydose.com">ywepaper.dailydose.com</a></li>
+                        <li><a href="http://www.bloncampus.dailydosebusinessline.com">www.bloncampus.dailydosebusinessline.com</a></li>
+                        <li><a href="http://www.dailydosecentre.com">www.dailydosecentre.com</a></li>
+                        <li><a href="http://epaper.dailydose.com">epaper.dailydose.com</a></li>
+                        <li><a href="http://epaper.dailydosebusinessline.com">epaper.dailydosebusinessline.com</a></li>
+                        <li><a href="http://crossword.dailydose.com">crossword.dailydose.com</a></li>
+                        <li><a href="http://eschool.dailydose.com">eschool.dailydose.com</a></li>
+                    </ul>
+                    <p>
+                        and the below services (Including but not limited to):
+                    </p>
+                    <ul>
+                        <li>Apps</li>
+                        <li>Podcasts</li>
+                        <li>Videos</li>
+                        <li>Photographs & Images</li>
+                        <li>E-paper</li>
+                        <li>Music</li>
+                        <li>Games / Contest</li>
+                        <li>RSS feed</li>
+                    </ul>
+                    <p>
+                        The above offered by Daily Dose including but not limited to delivery of content via Site, any mobile or internet connected device or otherwise (hereinafter “Service") to enhance public access to all the products owned by Daily Dose.
+                    </p>
+                    <p>
+                        This service is provided on an "As Is" basis & is continually under development.
+                    </p>
+     <p>
+                        Daily Dose informs that all users/visitors to this site(s) on the World Wide Web (the "Site”) shall adhere to these Terms & Conditions [T&C] & Rules & Regulations [R&R].
+                    </p>
+                    <p>
+                        By accessing this Site & Service you/user/visitor (Collectively referred to as Users) automatically confirm your acknowledgment & acceptance of these T&C & R&R of this agreement.
+                    </p>
+                    <h3>Copyright/Trademarks [Collectively "Intellectual Property Rights"]</h3>
+                    <p>
+                        All content, trademarks, and other intellectual property on the Site are owned by Daily Dose and are protected by applicable laws.
+                    </p>
+                `;
+            } else if (section === "privacy") {
+                content.innerHTML = `
+                    <h2>Daily Dose Publishing Privacy Notice</h2>
+                    <p>
+                        Our Company, and The Services We Provide
+                    </p>
+                    <h3>The Information We Collect</h3>
+                    <p>Information that you provide on our digital platforms:</p>
+                    <ul>
+                        <li>While registering and/or subscribing to the content on our website (some may be optional)</li>
+                        <li>Name</li>
+                        <li>DOB</li>
+                        <li>Gender</li>
+                        <li>Email ID</li>
+                        <li>Address</li>
+                        <li>Mobile Number</li>
+                        <li>Preferences (for example based on topic, author and cities)</li>
+                    </ul>
+                    <p>Information that we collect as you use our services:</p>
+                    <h4>Device Information:</h4>
+                    <ul>
+                        <li>Device Attributes: Information such as the operating system, hardware and software versions, browser types</li>
+                        <li>Device Operations: Information about operations performed on the device, such as mouse clicks, article scrolls, browser actions</li>
+                        <li>Identifiers: Unique identifiers, Device IDs, other identifiers</li>
+                        <li>Network and Connections: Information such as time zone, geographic location, IP address</li>
+                        <li>Cookie Data: Data from cookies stored on your device, including cookie IDs and settings</li>
+                    </ul>
+                    <p>Information that we collect about your preferences:</p>
+                    <p>When you navigate on our website, we carry out profiling to collect your preferences related to:</p>
+                    <ul>
+                        <li>Topics</li>
+                        <li>Authors</li>
+                        <li>Cities</li>
+                    </ul>
+                    <p>Information from partners:</p>
+                    <p>When you subscribe to our services through a third-party website we have partnered with, we may collect information that you provide about yourself on that website.</p>
+                    <p>While subscribing, other readers can mention you as a referrer and provide your name and telephone number.</p>
+                    <h3>How We Collect and Use Your Information</h3>
+                    <p>FAQs on Cookies We Use</p>
+                    <p>Managing Your Personal Data Stored with Us</p>
+                    <p>Security of Data You Share With Us</p>
+                    <p>Changes to This Policy</p>
+                    <p>Got Questions/Concerns?</p>
+                    <p>Effective Date - 1st November 2022</p>
+                    <h3>Our Digital Products</h3>
+                    <ul>
+                        <li>The Daily Dose Logo</li>
+                        <li>The Daily Dose E-Paper Logo</li>
+                        <li>Youngworld</li>
+                        <li>Crossword</li>
+                    </ul>
+                    <h3>Our THG Products</h3>
+                    <ul>
+                        <li>The Daily Dose BusinessLine Logo</li>
+                        <li>BusinessLine India's leading website for business and financial news, BSE and NSE quotes, stock recommendations, market analysis and research, politics ...</li>
+                        <li>The Daily Dose Sportstar Logo</li>
+                        <li>Sportstar brings you latest sports news, cricket and football match schedules, live score updates and results.</li>
+                        <li>The Daily Dose Frontline Logo</li>
+                        <li>Frontline – Indian Fortnightly Magazine which provides in-depth analysis & cover stories on Political News, Economic News, Current Social issues ...</li>
+                    </ul>
+                `;
+            }
+        }
+    </script>
+<script src="/js/script.js"></script>
+</body>
+</html>

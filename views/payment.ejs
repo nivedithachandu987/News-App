@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Payment Card</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9999, #800000, #ff4d4d);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            display: flex;
+            flex-direction: column; /* Use column layout */
+            min-height: 100vh; /* Ensure body takes at least full height */
+        }
+
+        .content {
+            flex: 1; /* Allow content to grow and fill space */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+
+        .payment-card {
+            width: 100%;
+            max-width: 300px;
+            background: linear-gradient(135deg, #ff4d4d, #800000, #ff9999);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .payment-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-header {
+            font-size: 1rem;
+            color: #ffcccc;
+            margin-bottom: 10px;
+        }
+
+        .pricing-section {
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffe6e6;
+            margin-bottom: 8px;
+        }
+
+        .plan-type {
+            font-size: 0.9rem;
+            color: #ffcccc;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .payment-method {
+            width: 48%;
+            padding: 8px;
+            background: linear-gradient(135deg, #ff9999, #b83232);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            background: linear-gradient(135deg, #b83232, #ff4d4d);
+        }
+
+        .payment-method i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff4d4d, #800000);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #800000, #b81824);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 600px) {
+            .payment-card {
+                padding: 12px;
+                max-width: 85%;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .payment-method {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .footer -content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-link-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-link-item:hover {
+            color: #c01414;
+        }
+
+        .social-media-section {
+            margin-bottom: 20px;
+        }
+
+        .social-media-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0;
+        }
+
+        .social-icon-link {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .social-icon-link:hover {
+            color: #9f2020;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+        }
+
+        .footer-bottom-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .bottom-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .bottom-link-item:hover {
+            color: #a70909;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #bbb;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-link-list, .social-media-list, .footer-bottom-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 12px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 10px;
+            }
+
+            .footer-copyright {
+                font-size: 8px;
+            }
+        }
+        
+        /* General Footer Styles */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            width: 100%; /* Set footer width to 100% */
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Logo Container */
+        .scrolling-logo {
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .logo-link {
+            font-size: 25px;
+            font-weight: bold;
+            color: maroon;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            position: absolute;
+            animation: bounceLeftRight 5s ease-in-out infinite;
+            transition: color 0.3s ease;
+            border: 2px solid #fff;
+            padding: 5px;
+            border-radius: 10px;
+            color: #bd1515;
+        }
+
+        /* Bouncing animation for logo */
+        @keyframes bounceLeftRight {
+            0% { left: 0; }
+            25% { left: 30%; }
+            50% { left: 70%; }
+            75% { left: 30%; }
+            100% { left: 0; }
+        }
+
+        /* Navigation Links */
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-link-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-link-item:hover {
+            color: #c01414;
+        }
+
+        /* Social Media Icons */
+        .social-media-section {
+            margin-bottom: 20px;
+        }
+
+        .social-media-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0;
+        }
+
+        .social-icon-link {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .social-icon-link:hover {
+            color: #9f2020;
+        }
+
+        /* Additional Links and Copyright */
+        .footer-bottom {
+            margin-top: 20px;
+        }
+
+        .footer-bottom-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .bottom-link-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .bottom-link-item:hover {
+            color: #a70909;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #bbb;
+            margin: 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            .subscribe-container {
+                margin-top: 60px; /* Adjusted margin to push it down further */
+                max-width: 90%; /* Allow more width on smaller screens */
+            }
+
+            .footer-link-list, .social-media-list, .footer-bottom-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 12px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .subscribe-container {
+                margin-top: 80px; /* Further increased margin for mobile */
+                max-width: 95%; /* Allow even more width on very small screens */
+            }
+
+            .footer-link-item, .social-icon-link, .bottom-link-item {
+                font-size: 10px;
+            }
+
+            .footer-copyright {
+                font-size: 8px;
+            }
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="date" id="current-date"></div>
+        <div class="user-actions">
+            <div class="login-link-container">
+                <a href="#" class="login-btn">
+                    <i class="fas fa-user icon"></i> Login
+                </a>
+            </div>
+            <a href="#" class="free-trial">Free Trial</a>
+            <a href="/subscription" class="btn subscribe">Subscribe</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="logo-container">
+            <a href="/" class="logo">
+                <i class="fas fa-capsules icon"></i> Daily Dose
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/premium" class="nav-link"><i class="fas fa-search search-icon"></i></a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/india" class="nav-link">India</a></li>
+                <li><a href="/world" class="nav-link">World</a></li>
+                <li><a href="/movies" class="nav-link">Movies</a></li>
+                <li><a href="/sport" class="nav-link">Sport</a></li>
+                <li><a href="/data" class="nav-link">Data</a></li>
+                <li><a href="/health" class="nav-link">Health</a></li>
+                <li><a href="/opinion" class="nav-link">Opinion</a></li>
+                <li><a href="/sci-tech" class="nav-link">Sci-Tech</a></li>
+                <li><a href="/premium" class="nav-link"><span class="circle">P</span> Premium</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="payment-card">
+            <div class="payment-header">Complete Your Payment</div>
+            <div class ```html
+            ="pricing-section">
+                <div class="price">₹1999/month</div>
+                <div class="plan-type">Premium Plan</div>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method" id="credit-card">
+                    <i class="fab fa-cc-visa"></i><br>
+                    <span>Credit Card</span>
+                </div>
+                <div class="payment-method" id="paypal">
+                    <i class="fab fa-paypal"></i><br>
+                    <span>PayPal</span>
+                </div>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method" id="google-pay">
+                    <i class="fab fa-google-pay"></i><br>
+                    <span>Google Pay</span>
+                </div>
+                <div class="payment-method" id="phonepe">
+                    <i class="fab fa-phone"></i><br>
+                    <span>PhonePe</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="processPayment()">Proceed to Checkout</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <footer>
+        <div class="scrolling-logo">
+            <a href="/" class="logo-link">
+                <i class="fas fa-capsules logo-icon"></i>
+                Daily Dose
+            </a>
+        </div>
+        <div class="footer-content">
+            <nav class="footer-links">
+                <ul class="footer-link-list">
+                    <li><a href="/" class="footer-link-item">Home</a></li>
+                    <li><a href="/india" class="footer-link-item">India</a></li>
+                    <li><a href="/world" class="footer-link-item">World</a></li>
+                    <li><a href="/movies" class="footer-link-item">Movies</a></li>
+                    <li><a href="/sport" class="footer-link-item">Sport</a></li>
+                    <li><a href="/data" class="footer-link-item">Data</a></li>
+                    <li><a href="/health" class="footer-link-item">Health</a></li>
+                    <li><a href="/opinion" class="footer-link-item">Opinion</a></li>
+                    <li><a href="/sci-tech" class="footer-link-item">Sci-Tech</a></li>
+                    <li><a href="/premium" class="footer-link-item">Premium</a></li>
+                </ul>
+            </nav>
+            <div class="social-media-section">
+                <ul class="social-media-list">
+                    <li><a href="https://www.facebook.com" target="_blank" class="social-icon-link"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.twitter.com" target="_blank" class="social-icon-link"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" class="social-icon-link"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.youtube.com" target="_blank" class="social-icon-link"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.telegram.org" target="_blank" class="social-icon-link"><i class="fab fa-telegram-plane"></i></a></li>
+                    <li><a href="https://www.spotify.com" target="_blank" class="social-icon-link"><i class="fab fa-spotify"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <ul class="footer-bottom-links">
+                    <li><a href="/infoCard" class="bottom-link-item">Current Issue</a></li>
+                    <li><a href="/infoCard" class="bottom-link-item">Terms of Use</a></li>
+                    <li><a href="/infoCard" class="bottom-link-item">Privacy Policy</a></li>
+                </ul>
+                <p class="footer-copyright">
+                    &copy; 2025, THG PUBLISHING PVT LTD. or its affiliated companies. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function processPayment() {
+            const selectedPaymentMethod = document.querySelector('.payment-method.selected');
+            if (selectedPaymentMethod) {
+                const method = selectedPaymentMethod.querySelector('span').textContent; 
+                alert(`Proceeding with ${method} payment method.`);
+            } else {
+                alert('Please select a payment method.');
+            }
+        }
+
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function () {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
